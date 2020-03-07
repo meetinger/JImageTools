@@ -94,4 +94,13 @@ public class JImageTools {
         return img.getSubimage(x1, y1, x2 - x1, y2 - y1);
     }
 
+    public static void drawPixel(BufferedImage img, int x, int y, Color color){
+        img.setRGB(x, y, color.getRGB());
+    }
+
+    public static void drawPixel(BufferedImage img, int x, int y, int R, int G, int B){
+        Color color = new Color(R, G, B);
+        drawPixel(img, x, y, color);
+    }
+
 }

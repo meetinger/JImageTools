@@ -98,9 +98,10 @@ public class JImageTools {
         img.setRGB(x, y, color.getRGB());
     }
 
-    public static void drawPixel(BufferedImage img, int x, int y, int R, int G, int B){
-        Color color = new Color(R, G, B);
-        drawPixel(img, x, y, color);
+    public static void drawLine(BufferedImage img, int x1, int y1, int x2, int y2, Color color){
+        Graphics2D gr = img.createGraphics();
+        gr.setColor(color);
+        gr.drawLine(x1, y1, x2, y2);
     }
-
+    
 }

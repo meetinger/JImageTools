@@ -17,7 +17,7 @@ import java.awt.image.BufferedImage;
 
 public class JImageTools {
 
-    public static BufferedImage loadImage(String path){
+    public static BufferedImage loadImage(String path) {
         return FXToBufferedImage(new Image(path));
     }
 
@@ -33,7 +33,7 @@ public class JImageTools {
         return result;
     }
 
-    public static BufferedImage resizeImage(BufferedImage toResize, int w, int h){
+    public static BufferedImage resizeImage(BufferedImage toResize, int w, int h) {
         BufferedImage resized = new BufferedImage(w, h, toResize.getType());
         Graphics2D g = resized.createGraphics();
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
@@ -44,11 +44,12 @@ public class JImageTools {
         return resized;
     }
 
-    public static BufferedImage fitByWidth(BufferedImage toFit, int w){
-        return resizeImage(toFit, w, (int) ((int)toFit.getHeight()*w/toFit.getWidth()));
+    public static BufferedImage fitByWidth(BufferedImage toFit, int w) {
+        return resizeImage(toFit, w, (int) ((int) toFit.getHeight() * w / toFit.getWidth()));
     }
-    public static BufferedImage fitByHeight(BufferedImage toFit, int h){
-        return resizeImage(toFit, (int) (toFit.getWidth()*h/toFit.getHeight()), h);
+
+    public static BufferedImage fitByHeight(BufferedImage toFit, int h) {
+        return resizeImage(toFit, (int) (toFit.getWidth() * h / toFit.getHeight()), h);
     }
 
     public static BufferedImage rotateImageByDegrees(BufferedImage img, double angle, boolean correctSize) {
@@ -61,7 +62,7 @@ public class JImageTools {
         int newWidth = (int) Math.floor(w * cos + h * sin);
         int newHeight = (int) Math.floor(h * cos + w * sin);
 
-        if(!correctSize){
+        if (!correctSize) {
             newWidth = w;
             newHeight = h;
         }
@@ -81,13 +82,16 @@ public class JImageTools {
         return rotated;
     }
 
-    public static BufferedImage FXToBufferedImage(Image img){
+    public static BufferedImage FXToBufferedImage(Image img) {
         return SwingFXUtils.fromFXImage(img, null);
     }
 
-    public static Image BufferedImageToFX(BufferedImage img){
+    public static Image BufferedImageToFX(BufferedImage img) {
         return SwingFXUtils.toFXImage(img, null);
     }
 
+    public static BufferedImage cropImage(BufferedImage img, int x1, int y1, int x2, int y2) {
+        return img.getSubimage(x1, y1, x2 - x1, y2 - y1);
+    }
 
 }
